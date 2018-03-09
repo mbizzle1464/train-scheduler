@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+/*body*/
+body {
+    background-color: #d3d3d3;
+}
+
+/*image background*/
+.image-bg {
+    background: url('../images/a.jpg') no-repeat center center;
+    background-color: #333F48;  
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    /* for mobile and tablets */
+    background-size: cover;
+    padding: 25px;
+    position: relative;
+}
+
+.jumbotron {
+    font-family: 'Courier New', Courier, monospace; 
+    color: #ffffff;
+    text-shadow: 1px 1px #000000;
+}
