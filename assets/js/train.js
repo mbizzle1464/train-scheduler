@@ -2,14 +2,16 @@
 var audioElement = document.createElement("audio");
 audioElement.setAttribute("src", "assets/audio/jupiter.mp3");
     
-    // Initialize Firebase
-    /*var config = { 
-        apiKey: "",
-        authDomain: "",
-        databaseURL: "",
-        storageBucket: "",  
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyCw0qP3uylpP3getb0x9JCjlbS8nk_g39s",
+    authDomain: "fir-cohort-2018-6fe66.firebaseapp.com",
+    databaseURL: "https://fir-cohort-2018-6fe66.firebaseio.com",
+    projectId: "fir-cohort-2018-6fe66",
+    storageBucket: "fir-cohort-2018-6fe66.appspot.com",
+    messagingSenderId: "1096844034032"
 };
-firebase.initializeApp(config); */
+firebase.initializeApp(config);
     // Create a variable to reference the database
     var database = firebase.database();
 
@@ -22,10 +24,10 @@ $('#addTrainBtn').on('click', function(){
     var firstTrain = $('#firstTrainInput').val().trim();
     var frequency = $('#freqInput').val().trim();
 
-  /*console.log(trainName);
+    console.log(trainName);
     console.log(destination);
     console.log(firstTrain);
-    console.log(frequency); */
+    console.log(frequency); 
 
     // Creates local "temporary" object for holding train data
     var newTrain = {
