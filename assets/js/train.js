@@ -2,16 +2,16 @@
 var audioElement = document.createElement("audio");
 audioElement.setAttribute("src", "assets/audio/jupiter.mp3");
     
-// Initialize Firebase
+    // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCw0qP3uylpP3getb0x9JCjlbS8nk_g39s",
-    authDomain: "fir-cohort-2018-6fe66.firebaseapp.com",
-    databaseURL: "https://fir-cohort-2018-6fe66.firebaseio.com",
-    projectId: "fir-cohort-2018-6fe66",
-    storageBucket: "fir-cohort-2018-6fe66.appspot.com",
-    messagingSenderId: "1096844034032"
-};
-firebase.initializeApp(config);
+    apiKey: "AIzaSyDyZwYKoENb0g4IzryMMyMgHpsnvaaJW8w",
+    authDomain: "train-station-4c184.firebaseapp.com",
+    databaseURL: "https://train-station-4c184.firebaseio.com",
+    projectId: "train-station-4c184",
+    storageBucket: "train-station-4c184.appspot.com",
+    messagingSenderId: "92868044902"
+  };
+  firebase.initializeApp(config);
     // Create a variable to reference the database
     var database = firebase.database();
 
@@ -58,11 +58,13 @@ $('#addTrainBtn').on('click', function(){
 database.ref().on('child_added', function(childSnapshot){
     console.log(childSnapshot.val());   
 
+    var sv = childSnapshot.val();   
+
     // Store everything into a variable
-    var trainName = childSnapshot.val().trim().name;
-    var destination = childSnapshot.val().trim().dest;
-    var firstTrain = childSnapshot.val().trim().first;
-    var frequency = childSnapshot.val().trim().freq;
+    var trainName = sv.name;
+    var destination = sv.dest;
+    var firstTrain = sv.first;
+    var frequency = sv.freq;
 
 
     // Train info
@@ -72,7 +74,7 @@ database.ref().on('child_added', function(childSnapshot){
     console.log(frequency);
 
     // First time
-    var firstTimeConverted = moment(firstTrain, "hh:mm").subtract(1, years);   
+    var firstTimeConverted = moment(firstTrain, "hh:mm").subtract(1, "years");   
     console.log(firstTimeConverted);    
 
     // Current time
@@ -81,7 +83,7 @@ database.ref().on('child_added', function(childSnapshot){
 
     // Difference between times
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");    
-    console.log("Difference in Time: " +diffTime);  
+    console.log("Difference in Time: " + diffTime);  
 
     // Time apart (remainder)
     var tRemainder = diffTime % frequency;  
@@ -93,9 +95,9 @@ database.ref().on('child_added', function(childSnapshot){
 
     // Next train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm"); 
-    console.log("Arrival Time: " + moment(nextTrain).format("hh:mm"));  
+    console.log("Arrival Time: " + nextTrain);  
 
-    $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+    $("#train-row").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 }); 
 
